@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=TASA+Explorer&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="simple.css">
+    <title>Mitt Drömhår - Kalkylatorn</title>
+</head>
+<body>
+    <header>
+        <h1>Mitt Drömhår</h1> 
+    </header>
+    <main>
+        
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        
+            <div class="numbertext" id="question-number"></div>
+            <div id="question-container" class="question-container">
+                
+            </div>
+      
+
+            <!-- Next and previous buttons -->
+             <div class="button-container">
+
+                 <div class="prev" id="prev-button"></div>
+                 <div class="clear" id="clear-button"><button onclick="clearAnswers()">Rensa alla svar</button></div>
+                 <div class="next" id="next-button"></div>
+            </div>
+        </div>
+        <button id="test" onclick="presentPricing()" style="background-color: brown;">Testa prisberäkning</button>
+        <div class="calculations" id="report-calc"><h4 class="result-title">Sammanställning</h4> 
+            <table id="costs-table">
+
+            </table>
+
+            <table id="price-table"></table>
+            
+        </div>
+        <div class="bottom-links">
+          <h4>Vill du veta hur du kan få din verksamhet att blomstra?<br/></h4> <button><a href="http://www.mittdromhar.se">Mitt Drömhår</a></button> 
+        </div>
+        
+    </main>
+    <footer><a href="https://www.instagram.com/mittdromhar">Mitt Drömhår 2025 <img src="insta.png" alt="Instagram" width="20px"></a></footer>
+<!-- Popup Alert -->
+<div id="popup-alert-overlay" class="popup-alert-overlay" style="display:none;">
+  <div class="popup-alert-box">
+    <span id="popup-alert-message"></span>
+    <button class="popup-alert-close" onclick="closePopupAlert(); event.stopPropagation();">Stäng</button>
+  </div>
+</div>
+<!-- Are you sure Alert -->
+<div id="popup-sure-overlay" class="popup-sure-overlay" style="display:none;">
+  <div class="popup-sure-box">
+    <span id="popup-sure-message"></span>
+    <div class="popup-sure-buttons">
+      <button class="popup-sure-yes" onclick="confirmSureAlert(); event.stopPropagation();">Fortsätt</button>
+      <button class="popup-sure-no" onclick="closeSureAlert(); event.stopPropagation();">Avbryt</button>
+    </div>
+  </div>
+</div>
+<!-- Report popup -->
+<div id="result-popup-overlay" class="result-popup-overlay" style="display:none;">
+  <div class="result-popup-box">
+
+    <div id="result-content"></div>
+
+      <div id="next-step">
+        <h3 class="next-step-title">Vill du ta nästa steg?</h3>
+        <a href="http://www.mittdromhar.se"><button class="more-help-button">Jag vill ha mer hjälp!</button></a>
+        <button class="print-button" id="print-button">Skriv ut resultat</button>
+
+        <button class="result-popup-close" onclick="closeResultPopup(); event.stopPropagation();">Stäng</button>
+      </div>
+  </div>
+</div>
+<!-- Print popup -->
+
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
