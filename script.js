@@ -11,7 +11,7 @@ const monthlyInput = 1;
 const yearlyInput = 2;
 
 const avgTaxRate = 0.32;
-const employerFee = 0.32;
+const employerFee = 0.3142;
 
 var regExZero = /^0[0-9].*$/
 
@@ -19,14 +19,14 @@ var costQuestions = [
   { number: 1, title: "Lön", text: "Vad VILL du ha i lön (exl. skatt) varje månad?", details: `Obs! Här kan du bortse från resultaträkningen - Fyll i vad du faktiskt VILL ha! <br/> <a href="https://advisa.se/fragor/vad-ar-medellonen-i-sverige/" alt="Medellön i Sverige" class="linkman">Lönestatistik</a>`, valueMonth: 0, valueYear: 0, requestedAnswerType: monthlyInput, answered: false },
   { number: 2, title: "Preliminärskatt", text: "Vad betalar du i Preliminärskatt per år:", details: "Preliminärskatt är skatt på överskott i företaget", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 3, title: "Bokföring", text: "Vad betalar du i Bokföringskostnad per år:", details: "Bokföringskostnad inkluderar även programvaror för bokföring (redovisningsprogram kan det stå i rapporten) (ej bankavgifter)", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
-  { number: 4, title: "Bokning/Kassa", text: "Vad betalar du för Bokings- och kassasystem per år:", details: "här tar du även med om du betalar för en kortterminal men inte transaktionsavgifterna ", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
+  { number: 4, title: "Bokning/Kassa", text: "Vad betalar du för Bokings- och kassasystem per år:", details: "Här tar du även med om du betalar för en kortterminal men inte transaktionsavgifterna ", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 5, title: "Telefon/Internet", text: "Vad betalar för Telefon/Internet per år:", details: "t.ex. Fast telefon, mobil, internetabbonemang", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 6, title: "El/Vatten", text: "Vad betalar du för El och Vatten per år:", details: "Elräkning, ev. vattenräkning, uppvärmning", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered:false },
-  { number: 7, title: "Hyra", text: "Vad betalar du i Hyra per år:", details: "lokalhyra (eller om du hyr stol kan du skriva in den här)", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
+  { number: 7, title: "Hyra", text: "Vad betalar du i Hyra per år:", details: "Lokalhyra (eller om du hyr stol kan du skriva in den här)", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 8, title: "Försäkring", text: "Vad betalar du i Försäkring per år:", details: "Företagsförsäkring, sjukförsäkring, livförsäkring, pensionsförsäkring (ej pensionssparande) osv", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 9, title: "Pensionssparande", text: "Hur mycket pensionssparar du varje månad?:", details: "Jag rekommenderar att du MINST sparar 2000:-/månad. Är du över 50 år , MINST 5000. Men allt är bättre än inget.", valueMonth: 0, valueYear: 0, requestedAnswerType: monthlyInput, answered: false },
   { number: 10, title: "Buffertsparande", text: "Hur mycket sparar du för buffert varje år?:", details: "Oförutsedda händelser, framtida investeringar? buffert - en buffert bör alla företag ha. Mitt förslag är minimum 10.000. Det kan gå till oförutsedda oluyckor/skador, sjukdom, renoveringar, expansion mm.", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
-  { number: 11, title: "Utbildning", text: "Vad betalar du för Utbildning per år:", details: "utbildning är inspirationskvällar, visningar; klippkurs, företagskurs mm. Tänk på att det ska täcka även förlorad inkomst den tiden", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
+  { number: 11, title: "Utbildning", text: "Vad betalar du för Utbildning per år:", details: "Utbildning är inspirationskvällar, visningar; klippkurs, företagskurs mm. Tänk på att det ska täcka även förlorad inkomst den tiden", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 12, title: "Fika/kaffe", text: "Vad betalar du för Fika/kaffe per månad:", details: "Bullar, kakor, mjölk, tidningar, kaffe, osv", valueMonth: 0, valueYear: 0, requestedAnswerType: monthlyInput, answered: false },
   { number: 13, title: "Bank/kortbetalning", text: "Vad betalar du i Bankkostnader (inkl.avgifter för kortbetalningar) per år:", details: "Kortavgifter, transaktionsavgifter, kontoavgifter, ränta, ", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 14, title: "Material behandlingar", text: "Vad betalar du i Materialkostnad för behandlingar per år?:", details: "Färg, folie, kappor, handdukar, penslar, skålar, väte osv. <br/>Obs! Inte inköp av stylingprodukter för försäljning. Detta kan vara svårt att avläsa ur resultaträkningen, uppskatta i så fall.", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
@@ -35,7 +35,7 @@ var costQuestions = [
   { number: 17, title: "IT-Tjänster", text: "Vad betalar du för IT-tjänster per år?", details: "Hemsidor, programvaror, dator, skrivare, tripod, mikrofon (content prylar med andra ord) osv", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 18, title: "Övrigt material", text: "Vad betalar du i Övriga materialkostnader per år:", details: "Skrivarpapper, bläck, pennor, brickor, kaffemuggar, påsar osv", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
   { number: 19, title: "Resor/Transport", text: "Vad betalar du i Resekostnader/Transport per år:", details: "Reser du i jobbet? trängselskatt? förmånsbil?", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false },
-  { number: 20, title: "Övrigt", text: "Övriga kostnader", details: "Alla saker du inte  över i din resultatrapport kan du föra in i den här posten", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false }
+  { number: 20, title: "Övrigt", text: "Övriga kostnader", details: "Alla utgifter du har över i din resultatrapport kan du föra in i den här posten", valueMonth: 0, valueYear: 0, requestedAnswerType: yearlyInput, answered: false }
 ];
 
 var additionalCosts = [
@@ -112,7 +112,7 @@ function currentQuestion() {
 
       </div>
       <div class="form-group">
-      <input type="number" id="answer" name="answer" value="${costQuestions[currentQuestionIndex].valueMonth}">
+      <input type="number" style="background-color: var(--number-background);" id="answer" name="answer" value="${costQuestions[currentQuestionIndex].valueMonth !== 0 ? costQuestions[currentQuestionIndex].valueMonth : ""}">
       </div>
       `
     }
@@ -120,16 +120,18 @@ function currentQuestion() {
     {  
       document.getElementById("question-container").innerHTML =
       `     
-      <div class="headline">          <span class="details-mark">
-      <span class="details-text">${costQuestions[currentQuestionIndex].details}</span>
+      <div class="headline">
+      <h4>${costQuestions[currentQuestionIndex].text}</h4>
+      <span class="details-mark">
+        <span class="details-text">${costQuestions[currentQuestionIndex].details}</span>
       ?
       </span>
-      <h4>${costQuestions[currentQuestionIndex].text}</h4>
+
 
       
       </div>
       <div class="form-group">
-      <input type="number" id="answer" name="answer" value="${costQuestions[currentQuestionIndex].valueYear}">
+      <input type="number" style="background-color: var(--number-background);" id="answer" name="answer" value="${costQuestions[currentQuestionIndex].valueYear !== 0 ? costQuestions[currentQuestionIndex].valueYear : ""}">
       </div>
       `
     }
@@ -147,7 +149,7 @@ function currentQuestion() {
       `
       <h4>${priceQuestions[currentQuestionIndex].text}</h4>
       <div class="form-group">
-      <input type="number" id="answer" name="answer" placeholder=0 value="${priceQuestions[currentQuestionIndex].value}">
+      <input type="number" style="background-color: var(--number-background);" id="answer" name="answer" placeholder=0 value="${priceQuestions[currentQuestionIndex].value}">
       </div>
       `
     }
@@ -306,8 +308,8 @@ costQuestions.forEach(question => {
   monthlyCostTotal = yearlyCostTotal / 11;
   additionalCosts[0].valueYear = costQuestions[0].valueYear * avgTaxRate;
   additionalCosts[0].valueMonth = costQuestions[0].valueMonth * avgTaxRate;
-  additionalCosts[1].valueYear = (costQuestions[0].valueYear + costQuestions[0].valueYear) * employerFee;
-  additionalCosts[1].valueMonth = (costQuestions[0].valueMonth + costQuestions[0].valueMonth) * employerFee;
+  additionalCosts[1].valueYear = costQuestions[0].valueYear * employerFee;
+  additionalCosts[1].valueMonth = costQuestions[0].valueMonth * employerFee;
   // additionalCosts[2].valueYear = monthlyCostTotal;
   // additionalCosts[2].valueMonth = monthlyCostTotal / 11;
 
@@ -718,42 +720,194 @@ function buildPrintableReport() {
 
 const printButton = document.getElementById('print-button');
 
-const printPage = () => {
-  // Get the content you want to print (e.g., the result popup)
-  const content = document.getElementById('result-content').innerHTML;
-
-  const table = document.getElementById('report-calc').innerHTML;
-
-  // Open a new window for printing
-  const printWindow = window.open('', '', 'width=1200,height=800');
-
-  // Write the content and styles to the new window
-  printWindow.document.write(`
-    <html>
-      <head>
-        <title>Skriv ut resultat</title>
-        <link rel="stylesheet" href="simple.css">
-      </head>
-      <body>
-      <div class="print-window-section">
-        <div class="print-window-content">
-          ${content}
-        </div>
-        <div class="print-window-table">
-          ${table}
-        </div>
+const buildPrintHeader = () => {
+  const today = new Date().toLocaleDateString('sv-SE');
+  return `
+    <header class="print-report-header">
+      <div class="print-report-meta">
+        <h2>Mitt Drömhår - Resultatrapport</h2>
+        <p>Skapad ${today}</p>
       </div>
+    </header>
+  `;
+};
+
+const buildPrintFooter = () => {
+  return `
+    <footer class="print-report-footer">
+      <img src="logga podia.png" alt="Mitt Dromhar logo" class="print-footer-logo" onerror="this.style.display='none'">
+      <p class="print-footer-site">www.mittdromhar.se</p>
+    </footer>
+  `;
+};
+
+const openNativePrintView = (content, table, compactLayout) => {
+  const printWindow = window.open('', '_blank', 'width=1100,height=800');
+  if (!printWindow) {
+    return false;
+  }
+
+  printWindow.document.write(`
+    <!doctype html>
+    <html lang="sv">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Skriv ut resultat</title>
+        <style>
+          @page { margin: 8mm; }
+          * { box-sizing: border-box; }
+          body {
+            margin: 0;
+            color: #212121;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 11pt;
+            line-height: 1.3;
+          }
+          body.print-compact {
+            font-size: 9.5pt;
+            line-height: 1.2;
+          }
+          .print-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+          }
+          .print-report-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #e7cf7b;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+          }
+          .print-report-meta {
+            width: 100%;
+          }
+          .print-footer-logo {
+            width: 210px;
+            height: 64px;
+            object-fit: contain;
+          }
+          .print-report-meta h2 {
+            margin: 0;
+            font-size: 0.95rem;
+          }
+          .print-report-meta p {
+            margin: 2px 0 0;
+            color: #555;
+            font-size: 0.75rem;
+          }
+          .print-window-content {
+            margin-bottom: 4mm;
+          }
+          .print-window-table {
+            margin-top: 3mm;
+          }
+          .print-report-footer {
+            text-align: center;
+            margin-top: 5mm;
+            page-break-inside: avoid;
+          }
+          .print-footer-site {
+            margin: 2mm 0 0;
+            font-size: 0.75rem;
+            color: #444;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          th, td {
+            border: 1px solid #bbb;
+            padding: 4px 6px;
+            text-align: left;
+            vertical-align: top;
+          }
+          body.print-compact th,
+          body.print-compact td {
+            padding: 2px 4px;
+          }
+          tr, td, th { page-break-inside: avoid; }
+          h1, h2, h3, h4, h5, p { margin: 0 0 5px; }
+        </style>
+      </head>
+      <body class="${compactLayout ? 'print-compact' : ''}">
+        <div class="print-wrap">
+          ${buildPrintHeader()}
+          <div class="print-window-content">${content}</div>
+          <div class="print-window-table">${table}</div>
+          ${buildPrintFooter()}
+        </div>
       </body>
     </html>
   `);
 
-  // Wait for the content and styles to load, then print
   printWindow.document.close();
   printWindow.onload = function() {
     printWindow.focus();
     printWindow.print();
     printWindow.close();
   };
+
+  return true;
+};
+
+const printFromCurrentPage = (content, table, compactLayout) => {
+  const existingPrintContainer = document.getElementById('print-container');
+  if (existingPrintContainer) {
+    existingPrintContainer.remove();
+  }
+
+  const printContainer = document.createElement('div');
+  printContainer.id = 'print-container';
+  printContainer.innerHTML = `
+    <div class="print-window-section ${compactLayout ? 'print-compact' : ''}">
+      ${buildPrintHeader()}
+      <div class="print-window-content">${content}</div>
+      <div class="print-window-table">${table}</div>
+      ${buildPrintFooter()}
+    </div>
+  `;
+
+  document.body.appendChild(printContainer);
+  document.body.classList.add('printing-report');
+
+  const cleanupPrintMode = () => {
+    document.body.classList.remove('printing-report');
+    const container = document.getElementById('print-container');
+    if (container) {
+      container.remove();
+    }
+  };
+
+  window.onafterprint = function() {
+    cleanupPrintMode();
+    window.onafterprint = null;
+  };
+
+  setTimeout(() => {
+    window.print();
+  }, 50);
+};
+
+const printPage = () => {
+  // Get the content you want to print (e.g., the result popup)
+  const content = document.getElementById('result-content').innerHTML;
+  const table = document.getElementById('report-calc').innerHTML;
+  const tableRows = (table.match(/<tr/gi) || []).length;
+  const compactLayout = tableRows > 12;
+
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (!isMobile) {
+    const opened = openNativePrintView(content, table, compactLayout);
+    if (opened) {
+      return;
+    }
+  }
+
+  // Mobile and popup-blocked fallback.
+  printFromCurrentPage(content, table, compactLayout);
 };
 
 printButton.addEventListener('click', printPage);
